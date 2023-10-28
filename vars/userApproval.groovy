@@ -1,3 +1,7 @@
 def call(){
-  input 'Do you want to continue?'
+      node {
+    stage('User Approval') {
+        input 'Do you want to continue?'
+        }
+    }
 }
