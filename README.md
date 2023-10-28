@@ -1,0 +1,2 @@
+# sharedLibrary
+for Jenkins practice
