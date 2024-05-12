@@ -19,6 +19,6 @@ def call(String url, String creds, String branch, boolean runPacker, String pack
         //     utils.destroy(rootPath, childPath)
     // } 
     else {
-            error("Skipping run Packer")
+            sh "Skipping run Packer"
     }
 }
