@@ -36,8 +36,8 @@ def call(String url, String creds, String branch, boolean runPacker, String pack
 
     if (runTerraform) {
         terraform.terraformInit(terraformDirPath)
-        terraform.terraformPlan(terraformDirPath, amiName)
         if (action == 'apply') {
+            terraform.terraformPlan(terraformDirPath, amiName)
             approval.call(applyMsg)
             terraform.terraformApply(terraformDirPath, amiName)
         } else if (action == 'destroy') {
