@@ -11,7 +11,7 @@ def call(String url, String creds, String branch, boolean runPacker, String pack
     gitCheckout.call(url, creds, branch)
 
     if (runPacker) {
-            packer.packerInit()
+            packer.packerInit(packerFileName)
             packer.packerBuild(packerFileName)
     } 
     // else if (action == 'destroy') {
