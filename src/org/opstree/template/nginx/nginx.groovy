@@ -20,6 +20,6 @@ def call(String url, String creds, String branch, boolean runPacker, String pack
     // } 
     else {
         script {
-            sh "skipping run packer "
+            print("skipping run packer")
         }    }
 }
