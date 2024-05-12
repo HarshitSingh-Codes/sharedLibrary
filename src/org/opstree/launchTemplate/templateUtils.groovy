@@ -19,7 +19,7 @@ def terraformPlan(String codePath) {
 def terraformApply(String codePath) {
     stage('terraform apply') {
         script {
-            sh "cd launch-template/ && terraform apply  -auto-approve"
+            sh "cd ${codePath} && terraform apply  -auto-approve"
         }
     }
 }
@@ -27,7 +27,7 @@ def terraformApply(String codePath) {
 def terraformDestroy(String codePath) {
     stage('terraform destroy') {
         script {
-            sh "cd launch-template/ && terraform destroy  -auto-approve"
+            sh "cd ${codePath} && terraform destroy  -auto-approve"
         }
     }
 }
