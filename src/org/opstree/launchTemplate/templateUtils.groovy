@@ -11,7 +11,7 @@ def terraformInit(String codePath) {
 def terraformPlan(String codePath) {
     stage('terraform  plan') {
         script {
-            sh "cd ${codePath} && terraform plan"
+            sh "cd ${codePath} && terraform -var ami_name=${amiName} plan"
         }
     }
 }
@@ -19,7 +19,7 @@ def terraformPlan(String codePath) {
 def terraformApply(String codePath) {
     stage('terraform apply') {
         script {
-            sh "cd ${codePath} && terraform apply  -auto-approve"
+            sh "cd ${codePath} && terraform apply -var ami_name=${amiName} -auto-approve"
         }
     }
 }
