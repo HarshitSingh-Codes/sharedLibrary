@@ -11,7 +11,7 @@ def terraformInit(String codePath) {
 def terraformPlan(String codePath, String amiName) {
     stage('terraform  plan') {
         script {
-            sh "cd ${codePath} && terraform -var ami_name=${amiName} plan"
+            sh "cd ${codePath} && terraform  plan -var ami_name=${amiName}"
         }
     }
 }
