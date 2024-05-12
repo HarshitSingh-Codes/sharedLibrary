@@ -1,4 +1,4 @@
-package org.opstree.common
+package org.opstree.packer
 
 def packerInit() {
     stage('packer init') {
