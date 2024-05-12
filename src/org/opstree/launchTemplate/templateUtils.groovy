@@ -1,9 +1,33 @@
 package org.opstree.launchTemplate
 
-def call(String url, String creds, String branch) {
-    stage('Clone') {
+def terraformInit(String codePath) {
+    stage('packer init') {
         script {
-            git branch: "${branch}", credentialsId: "${creds}", url: "${url}"
+            sh "cd launch-template/ && terraform init "
+        }
+    }
+}
+
+def terraformPlan(String codePath) {
+    stage('packer build') {
+        script {
+            sh "cd launch-template/ && terraform plan"
+        }
+    }
+}
+
+def terraformApply(String codePath) {
+    stage('packer build') {
+        script {
+            sh "cd launch-template/ && terraform apply  -auto-approve"
+        }
+    }
+}
+
+def terraformDestroy(String codePath) {
+    stage('packer build') {
+        script {
+            sh "cd launch-template/ && terraform destroy  -auto-approve"
         }
     }
 }
