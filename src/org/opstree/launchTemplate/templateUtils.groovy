@@ -3,7 +3,7 @@ package org.opstree.launchTemplate
 def terraformInit(String codePath) {
     stage('terraform init') {
         script {
-            sh "cd launch-template/ && terraform init "
+            sh "cd ${codePath} && terraform init "
         }
     }
 }
@@ -11,7 +11,7 @@ def terraformInit(String codePath) {
 def terraformPlan(String codePath) {
     stage('terraform  plan') {
         script {
-            sh "cd launch-template/ && terraform plan"
+            sh "cd ${codePath} && terraform plan"
         }
     }
 }
