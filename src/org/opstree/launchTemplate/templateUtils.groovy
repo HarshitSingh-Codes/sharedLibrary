@@ -1,7 +1,7 @@
 package org.opstree.launchTemplate
 
 def terraformInit(String codePath) {
-    stage('packer init') {
+    stage('terraform init') {
         script {
             sh "cd launch-template/ && terraform init "
         }
@@ -9,7 +9,7 @@ def terraformInit(String codePath) {
 }
 
 def terraformPlan(String codePath) {
-    stage('packer build') {
+    stage('terraform  plan') {
         script {
             sh "cd launch-template/ && terraform plan"
         }
@@ -17,7 +17,7 @@ def terraformPlan(String codePath) {
 }
 
 def terraformApply(String codePath) {
-    stage('packer build') {
+    stage('terraform apply') {
         script {
             sh "cd launch-template/ && terraform apply  -auto-approve"
         }
@@ -25,7 +25,7 @@ def terraformApply(String codePath) {
 }
 
 def terraformDestroy(String codePath) {
-    stage('packer build') {
+    stage('terraform destroy') {
         script {
             sh "cd launch-template/ && terraform destroy  -auto-approve"
         }
