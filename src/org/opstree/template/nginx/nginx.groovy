@@ -26,8 +26,8 @@ def call(String url, String creds, String branch, boolean runPacker, String pack
     }
 
     if (runTerraform) {
-        terraform.terraformInit(String terraformDirPath)
-        terraform.terraformPlan(String terraformDirPath)
+        terraform.terraformInit(terraformDirPath)
+        terraform.terraformPlan(terraformDirPath)
     } 
     // else if (action == 'destroy') {
         //     approval.call(destroyMsg)
