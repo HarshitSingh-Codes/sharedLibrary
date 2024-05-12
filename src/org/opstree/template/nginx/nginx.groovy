@@ -37,11 +37,14 @@ def call(String url, String creds, String branch, boolean runPacker, String pack
     if (runTerraform) {
         terraform.terraformInit(terraformDirPath)
         terraform.terraformPlan(terraformDirPath)
+        if (action == 'apply') {
+            approval.call(applyMsg)
+            terraform.terraformApply(terraformDirPath)
+        } else if (action == 'destroy') {
+            approval.call(destroyMsg)
+            terraform.terraformDestroy(terraformDirPath)
+        }
     } 
-    // else if (action == 'destroy') {
-        //     approval.call(destroyMsg)
-        //     utils.destroy(rootPath, childPath)
-    // } 
     else {
         script {
             print("skipping run terraform")
