@@ -1,9 +1,9 @@
 package org.opstree.packer
 
-def packerInit() {
+def packerInit(String fileName) {
     stage('packer init') {
         script {
-            sh "packer init ."
+            sh "packer init ${fileName}"
         }
     }
 }
