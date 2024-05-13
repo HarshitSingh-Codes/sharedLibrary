@@ -19,14 +19,6 @@ def call(String url, String creds, String branch, boolean runPacker, String pack
     if (runPacker) {
         packer.packerInit(packerFileName)
         packer.packerBuild(packerFileName)
-        if (action == 'apply') {
-            approval.call(applyMsg)
-            // utils.apply(rootPath, childPath)
-        } 
-        else if (action == 'destroy') {
-            approval.call(destroyMsg)
-            // utils.destroy(rootPath, childPath)
-        }
     } 
     else {
         script {
