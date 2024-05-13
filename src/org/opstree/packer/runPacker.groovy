@@ -41,7 +41,7 @@ def displayAmiName() {
                     returnStdout: true
                 ).trim()
                 env.AMI_NAME = amiName
-                env.AMI_AD = amiID
+                env.AMI_ID = amiID
             }
         sh "echo 'Name--> ${AMI_NAME} ID--> ${AMI_ID} is created.'"
     }
