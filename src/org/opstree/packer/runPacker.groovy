@@ -16,7 +16,8 @@ def packerBuild(String fileName, String amiVersion) {
               -var 'image_name=nginx' \
               -var 'image_version=${amiVersion}' \
               -var 'filePath=./index2.html' ${fileName}
-            
+            """
+            sh"""
             export AMI_NAME=$(jq -r '.builds[] | select(.name == "nginx-ami") | .custom_data.ami_name' manifest.json)
             echo $AMI_NAME
             """
