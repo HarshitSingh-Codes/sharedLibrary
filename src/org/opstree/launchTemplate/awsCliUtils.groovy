@@ -7,7 +7,9 @@ def updateLT(String amiID) {
             aws ec2 create-launch-template-version \
             --launch-template-id lt-0e0cf0cd693670427 \
             --version-description WebVersion  \
-            --launch-template-data '{"ImageId":${amiID}}' 
+            --launch-template-data '{ \
+            "ImageId":${amiID} \
+            }' 
             '''
         }
     }
