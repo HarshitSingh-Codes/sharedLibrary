@@ -4,7 +4,7 @@ import org.opstree.common.*
 import org.opstree.launchTemplate.*
 import org.opstree.packer.*
 
-def call(String url, String creds, String branch, boolean runPacker, String packerFileName, boolean runTerraform, String terraformDirPath, String action, String amiName){
+def call(String url, String creds, String branch, boolean runPacker, String packerFileName, boolean runTerraform, String terraformDirPath, String action, String amiName, String amiVersion){
     
     def gitCheckout = new gitCheckout()
     def packer = new runPacker()
@@ -18,7 +18,8 @@ def call(String url, String creds, String branch, boolean runPacker, String pack
 
     if (runPacker) {
         packer.packerInit(packerFileName)
-        packer.packerBuild(packerFileName)
+        packer.packerBuild(amiVersion)
+        packer.displayAmiName()
     } 
     else {
         script {
