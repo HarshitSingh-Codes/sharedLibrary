@@ -27,8 +27,8 @@ def packerBuild(String fileName, String amiVersion) {
         }   
 }
 def displayAmiName() {
-    stage('store AMI Name') {
+    stage('AMI Name') {
             
-        sh "echo $AMI_NAME"
+        sh "echo '$AMI_NAME is created.'"
     }
 }
