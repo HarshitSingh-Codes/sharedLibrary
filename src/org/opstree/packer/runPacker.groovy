@@ -28,7 +28,6 @@ def packerBuild(String fileName, String amiVersion) {
 }
 def displayAmiName() {
     stage('AMI Name') {
-            
         sh "echo '$AMI_NAME is created.'"
     }
 }
