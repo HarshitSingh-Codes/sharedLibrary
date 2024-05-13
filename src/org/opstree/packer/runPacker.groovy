@@ -17,14 +17,17 @@ def packerBuild(String fileName, String amiVersion) {
             -var 'image_version=${amiVersion}' \
             -var 'filePath=./index2.html' ${fileName}
             """
-            sh'''
-            export AMI_NAME=$(jq -r '.builds[] | select(.name == "nginx-ami") | .custom_data.ami_name' manifest.json)
-            echo $AMI_NAME
-            '''
         }
 }
 def displayAmiName() {
-    stage('packer build') {
-            sh "echo $AMI_NAME"
+    stage('store AMI Name') {
+        script {
+            def amiName = sh(
+                script: 'jq -r \'.builds[] | select(.name == "nginx-ami") | .custom_data.ami_name\' manifest.json',
+                returnStdout: true
+            ).trim()
+            env.AMI_NAME = amiName
+        }    
+        sh "echo $AMI_NAME"
     }
 }
