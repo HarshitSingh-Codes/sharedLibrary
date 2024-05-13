@@ -8,7 +8,7 @@ def call(String url, String creds, String branch, boolean runPacker, String pack
     
     def gitCheckout = new gitCheckout()
     def packer = new runPacker()
-    def terraform = new templateUtils()
+    def terraform = new terraformUtils()
     def approval = new approval()
 
     def applyMsg = 'Do you want to apply the changes ?'
