@@ -7,15 +7,15 @@ def packerInit(String fileName) {
         }
     }
 }
-def packerBuild(String amiVersion) {
+def packerBuild(String fileName, String amiVersion) {
     stage('packer build') {
         script {
             //sh "packer build ${fileName}"
             sh """packer build -force \
-              -var "golden_ami_name=golden-ami" \
-              -var "image_name=nginx" \
-              -var "image_version=${amiVersion}" \
-              -var "filePath=./index2.html" .
+              -var 'golden_ami_name=golden-ami' \
+              -var 'image_name=nginx' \
+              -var 'image_version=${amiVersion}' \
+              -var 'filePath=./index2.html' ${fileName}
             
             export AMI_NAME=$(jq -r '.builds[] | select(.name == "nginx-ami") | .custom_data.ami_name' manifest.json)
             echo $AMI_NAME
