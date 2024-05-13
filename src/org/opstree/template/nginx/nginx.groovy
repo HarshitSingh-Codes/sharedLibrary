@@ -18,7 +18,7 @@ def call(String url, String creds, String branch, boolean runPacker, String pack
 
     if (runPacker) {
         packer.packerInit(packerFileName)
-        packer.packerBuild(amiVersion)
+        packer.packerBuild(packerFileName, amiVersion)
         packer.displayAmiName()
     } 
     else {
