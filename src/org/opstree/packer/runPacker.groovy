@@ -35,7 +35,9 @@ def displayAmiName() {
                 ).trim()
                 
                 def amiID = sh(
-                    script: 'jq -r '.builds[].artifact_id' manifest.json | cut -d ":" -f2',
+                    script: '''
+                    jq -r '.builds[].artifact_id' manifest.json | cut -d ":" -f2
+                    ''',
                     returnStdout: true
                 ).trim()
                 env.AMI_NAME = amiName
