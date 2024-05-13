@@ -8,7 +8,7 @@ def updateLT(String amiID) {
             --launch-template-id lt-0e0cf0cd693670427 \
             --version-description WebVersion  \
             --launch-template-data '{ \
-            "ImageId":${amiID} \
+            "ImageId":"${amiID}" \
             }' 
             '''
         }
