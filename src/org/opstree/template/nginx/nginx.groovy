@@ -32,5 +32,5 @@ def updateLaunchTemplate(String templateID){
         ).trim()    
     // def  ami_id = packer.displayAmiName()
     
-    sh 'echo ${amiID}'
+    sh "echo ${amiID}"
 }
