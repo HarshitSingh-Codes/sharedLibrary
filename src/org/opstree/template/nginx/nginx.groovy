@@ -30,7 +30,6 @@ def updateLaunchTemplate(String templateID){
         ''',
         returnStdout: true
         ).trim()    
-    // def  ami_id = packer.displayAmiName()
     
-    sh "echo ${amiID}"
+    update.updateLaunchTemplate(templateID, amiID)
 }
