@@ -12,7 +12,7 @@ def updateLaunchTemplate(String templateID, String amiID) {
             """
     }
 }
-def startInstanceRefresh(String templateID, String asgConfig) {
+def startInstanceRefresh(String asgConfig) {
     stage('Start Instance Refresh') {
             sh """
             aws autoscaling start-instance-refresh \
