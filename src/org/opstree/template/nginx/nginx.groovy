@@ -30,6 +30,13 @@ def runPacker(String packerFileName, String amiVersion){
     
     packer.packerInit(packerFileName)
     packer.packerBuild(packerFileName, amiVersion)
+}
+
+def updateLaunchTemplate(String templateID, String amiID){
+    
+    def packer = new runPacker()
+    def update =  new awsCliUtils()
+    
     packer.displayAmiName()
 
 }
