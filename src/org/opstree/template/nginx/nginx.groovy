@@ -24,8 +24,13 @@ def updateLaunchTemplate(String templateID){
     def packer = new runPacker()
     def update =  new awsCliUtils()
     
+    def amiID = sh(
+        script: '''
+        jq -r '.builds[].artifact_id' manifest.json | cut -d ":" -f2
+        ''',
+        returnStdout: true
+        ).trim()    
     def  ami_id = packer.displayAmiName()
     
-    packer.displayAmiName()
-
+    sh 'echo ${amiID}'
 }
