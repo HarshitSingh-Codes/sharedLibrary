@@ -19,7 +19,7 @@ def runPacker(String packerFileName, String amiVersion){
     packer.packerBuild(packerFileName, amiVersion)
 }
 
-def updateLaunchTemplate(String templateID, String sourceVersion){
+def updateLaunchTemplate(String templateID, String sourceVersion, versionDescription){
     
     def update =  new awsCliUtils()
     
@@ -30,7 +30,7 @@ def updateLaunchTemplate(String templateID, String sourceVersion){
         returnStdout: true
         ).trim()    
     
-    update.updateLaunchTemplate(templateID, amiID, sourceVersion)
+    update.updateLaunchTemplate(templateID, amiID, sourceVersion, versionDescription)
 }
 
 def instanceRefresh(String asgConfig) {
