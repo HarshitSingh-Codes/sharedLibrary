@@ -1,12 +1,12 @@
 package org.opstree.launchTemplate
 
-def updateLaunchTemplate(String templateID, String amiID, String sourceVersion) {
+def updateLaunchTemplate(String templateID, String amiID, String sourceVersion, String versionDescription) {
     stage('Update launch template') {
             sh """
             aws ec2 create-launch-template-version \
             --launch-template-id ${templateID} \
             --source-version ${sourceVersion} \
-            --version-description WebVersion  \
+            --version-description ${versionDescription}  \
             --launch-template-data '{ \
             "ImageId":"${amiID}" \
             }' 
