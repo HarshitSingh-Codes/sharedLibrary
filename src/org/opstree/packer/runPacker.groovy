@@ -11,7 +11,7 @@ def packerBuild(String fileName, String amiVersion) {
     stage('packer build') {
             //sh "packer build ${fileName}"
             sh """
-            packer build -force \
+            packer build \
             -var 'golden_ami_name=golden-ami' \
             -var 'image_name=nginx' \
             -var 'image_version=${amiVersion}' \
