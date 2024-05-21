@@ -20,13 +20,16 @@ def call(Map step_params){
 
     if (step_params.runPacker == true) {
         runPacker = "${step_params.runPacker}"
-        rootFolderNAme = "${step_params.rootFolderNAme}"
-        packerFileName = "${step_params.packerFileName}"
+        goldenAmiName = "${step_params.goldenAmiName}"
+        amiName = "${step_params.amiName}"
         amiVersion = "${step_params.amiVersion}"
+        rootFolderName = "${step_params.rootFolderName}"
+        packerFileName = "${step_params.packerFileName}"
 
-        fileName = "${step_params.rootFolderNAme}/${step_params.packerFileName}"
+        fileName = "${step_params.rootFolderName}/${step_params.packerFileName}"
+        
         packer.packerInit(fileName)
-        packer.packerBuild(fileName, amiVersion)
+        packer.packerBuild(goldenAmiName, amiName, amiVersion, fileName)
     }
 }
 // def runPacker(String packerFileName, String amiVersion){
