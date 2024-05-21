@@ -68,10 +68,4 @@ def call(Map step_params){
         println("startInstanceRefresh step not executed because startInstanceRefresh parameter is false or not provided.")
     }
 
-// def instanceRefresh(String asgConfig) {
-    
-//     def instanceRefresh =  new awsCliUtils()
-
-//     instanceRefresh.startInstanceRefresh(asgConfig)
-// }
 }
