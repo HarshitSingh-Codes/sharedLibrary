@@ -17,6 +17,17 @@ def call(Map step_params){
         branch = "${step_params.branch}"
         gitCheckout.call(url, creds, branch)
     }
+
+    if (step_params.runPacker == true) {
+        runPacker = "${step_params.runPacker}"
+        rootFolderNAme = "${step_params.rootFolderNAme}"
+        packerFileName = "${step_params.packerFileName}"
+        amiVersion = "${step_params.amiVersion}"
+
+        fileName = "/${step_params.rootFolderNAme}/${step_params.packerFileName}"
+        packer.packerInit(fileName)
+        packer.packerBuild(fileName, amiVersion)
+    }
 }
 // def runPacker(String packerFileName, String amiVersion){
     
