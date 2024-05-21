@@ -8,15 +8,17 @@ def call(Map step_params){
     
     def gitCheckout = new gitCheckout()
     def packer = new runPacker()
-    def updateLaunchTemplate =  new awsCliUtils()
-    def instanceRefresh =  new awsCliUtils()
+    def awsUtils =  new awsCliUtils()
 
     if (step_params.gitCheckout == true) {
         url = "${step_params.url}"
         creds = "${step_params.creds}"
         branch = "${step_params.branch}"
         gitCheckout.call(url, creds, branch)
+    } else {
+        println("gitCheckout step not executed because gitCheckout parameter is false or not provided.")
     }
+
 
     if (step_params.runPacker == true) {
         runPacker = "${step_params.runPacker}"
@@ -30,29 +32,27 @@ def call(Map step_params){
         
         packer.packerInit(fileName)
         packer.packerBuild(goldenAmiName, amiName, amiVersion, fileName)
+    } else {
+        println("runPacker step not executed because runPacker parameter is false or not provided.")
     }
-}
-// def runPacker(String packerFileName, String amiVersion){
-    
-//     def packer = new runPacker()
-    
-//     packer.packerInit(packerFileName)
-//     packer.packerBuild(packerFileName, amiVersion)
-// }
+    if (step_params.updateLaunchTemplate == true) {
 
-// def updateLaunchTemplate(String templateID, String sourceVersion, versionDescription){
-    
-//     def update =  new awsCliUtils()
-    
-//     def amiID = sh(
-//         script: '''
-//         jq -r '.builds[].artifact_id' manifest.json | cut -d ":" -f2
-//         ''',
-//         returnStdout: true
-//         ).trim()    
-    
-//     update.updateLaunchTemplate(templateID, amiID, sourceVersion, versionDescription)
-// }
+        templateID = "${step_params.templateID}"
+        sourceVersion = "${step_params.sourceVersion}"
+        versionDescription = "${step_params.versionDescription}"
+        
+        def amiID = sh(
+        script: '''
+        jq -r '.builds[].artifact_id' manifest.json | cut -d ":" -f2
+        ''',
+        returnStdout: true
+        ).trim()   
+
+        awsUtils.updateLaunchTemplate(templateID, amiID, sourceVersion, versionDescription)
+
+    } else {
+        println("runPacker step not executed because runPacker parameter is false or not provided.")
+    }
 
 // def instanceRefresh(String asgConfig) {
     
@@ -60,3 +60,4 @@ def call(Map step_params){
 
 //     instanceRefresh.startInstanceRefresh(asgConfig)
 // }
+}
