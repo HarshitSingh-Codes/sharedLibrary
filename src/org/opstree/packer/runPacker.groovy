@@ -14,8 +14,7 @@ def packerBuild(String goldenAmiName, String amiName, String amiVersion, String 
             packer build -force \
             -var 'golden_ami_name=${goldenAmiName}' \
             -var 'image_name=${amiName}' \
-            -var 'image_version=${amiVersion}' \
-            -var 'filePath=./index2.html' ${fileName}
+            -var 'image_version=${amiVersion}' ${fileName}
             """
         }   
 }
