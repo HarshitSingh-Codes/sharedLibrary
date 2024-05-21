@@ -24,7 +24,7 @@ def call(Map step_params){
         packerFileName = "${step_params.packerFileName}"
         amiVersion = "${step_params.amiVersion}"
 
-        fileName = "/${step_params.rootFolderNAme}/${step_params.packerFileName}"
+        fileName = "${step_params.rootFolderNAme}/${step_params.packerFileName}"
         packer.packerInit(fileName)
         packer.packerBuild(fileName, amiVersion)
     }
