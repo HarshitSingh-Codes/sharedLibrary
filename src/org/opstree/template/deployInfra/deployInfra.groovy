@@ -36,7 +36,7 @@ def call(Map step_params){
         println("runPacker step not executed because runPacker parameter is false or not provided.")
     }
 
-    
+
     if (step_params.updateLaunchTemplate == true) {
 
         templateID = "${step_params.templateID}"
@@ -53,7 +53,19 @@ def call(Map step_params){
         awsUtils.updateLaunchTemplate(templateID, amiID, sourceVersion, versionDescription)
 
     } else {
-        println("runPacker step not executed because runPacker parameter is false or not provided.")
+        println("updateLaunchTemplate step not executed because updateLaunchTemplate parameter is false or not provided.")
+    }
+
+    if (step_params.startInstanceRefresh == true) {
+
+        // asgConfigRootdir = "${step_params.asgConfigRootdir}"
+        // asgConfigFilename = "${step_params.asgConfigFilename}"
+
+        asgConfig = "${step_params.asgConfigRootdir}/${step_params.asgConfigFilename}"
+        awsUtils.startInstanceRefresh(asgConfig)
+
+    } else {
+        println("startInstanceRefresh step not executed because startInstanceRefresh parameter is false or not provided.")
     }
 
 // def instanceRefresh(String asgConfig) {
