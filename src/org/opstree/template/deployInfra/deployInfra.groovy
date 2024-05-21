@@ -35,6 +35,8 @@ def call(Map step_params){
     } else {
         println("runPacker step not executed because runPacker parameter is false or not provided.")
     }
+
+    
     if (step_params.updateLaunchTemplate == true) {
 
         templateID = "${step_params.templateID}"

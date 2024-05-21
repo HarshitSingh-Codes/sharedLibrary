@@ -6,7 +6,7 @@ def updateLaunchTemplate(String templateID, String amiID, String sourceVersion, 
             aws ec2 create-launch-template-version \
             --launch-template-id ${templateID} \
             --source-version ${sourceVersion} \
-            --version-description ${versionDescription}  \
+            --version-description "${versionDescription}"  \
             --launch-template-data '{ \
             "ImageId":"${amiID}" \
             }' 
